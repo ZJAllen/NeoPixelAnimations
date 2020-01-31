@@ -46,3 +46,8 @@ def breathe(target_color: tuple, steps: int = 100, speed: int = 10):
         puck.fill(c)
         puck.show()
         time.sleep(wait_ms / 1000.0)
+
+
+if __name__ == '__main__':
+    while True:
+        breathe((0, 33, 165))
