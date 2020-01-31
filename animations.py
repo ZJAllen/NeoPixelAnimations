@@ -13,7 +13,7 @@ import time
 puck = neopixel.NeoPixel(board.D18, 24)
 
 
-def breathe(target_color: tuple, steps: int = 100, speed: int = 10):
+def breathe(target_color: tuple, steps: int = 200, speed: int = 95):
     if speed <= 0:
         speed = 1
     if speed > 100:
@@ -39,13 +39,13 @@ def breathe(target_color: tuple, steps: int = 100, speed: int = 10):
         b += step_B
 
     for x in range(steps):
-        r -= step_R
-        g -= step_G
-        b -= step_B
         c = (int(r), int(g), int(b))
         puck.fill(c)
         puck.show()
         time.sleep(wait_ms / 1000.0)
+        r -= step_R
+        g -= step_G
+        b -= step_B
 
 
 if __name__ == '__main__':
