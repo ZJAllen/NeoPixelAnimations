@@ -43,7 +43,6 @@ def breathe(target_color: tuple, steps: int = 100, speed: int = 10):
         g -= step_G
         b -= step_B
         c = (int(r), int(g), int(b))
-        ppuck.fill(c)
+        puck.fill(c)
         puck.show()
         time.sleep(wait_ms / 1000.0)
-
