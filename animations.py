@@ -76,13 +76,13 @@ def countdown(color: tuple, timer_seconds: int):
         step_R = color[0]/steps
         step_G = color[1]/steps
         step_B = color[2]/steps
-        
-        for j in range(1, steps+2, 1):
+
+        for j in range(1, steps+1, 1):
             r -= step_R
             g -= step_G
             b -= step_B
-            color = (int(r), int(g), int(b))
-            pixel[i] = color
+            fade_color = (int(r), int(g), int(b))
+            pixel[i] = fade_color
             time.sleep(math.log(j) / 1000)
         
         time.sleep(delay_sec)
