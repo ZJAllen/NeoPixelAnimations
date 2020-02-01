@@ -58,35 +58,20 @@ def breathe(target_color: tuple, speed: int = 90):
 
     # Pause at 'off' for a moment
     time.sleep(0.1)
-    
-    '''
-    for x in range(steps):
-        c = (int(r), int(g), int(b))
-        pixel.fill(c)
-        pixel.show()
-        time.sleep(wait_ms / 1000)
-        r += step_R
-        g += step_G
-        b += step_B
 
-    time.sleep(wait_ms / 500)
 
-    for x in range(steps):
-        r -= step_R
-        g -= step_G
-        b -= step_B
-        c = (int(r), int(g), int(b))
-        pixel.fill(c)
-        pixel.show()
-        time.sleep(wait_ms / 1000)
+def countdown(color: tuple, timer_seconds: int):
+    delay_sec = timer_seconds / 24
 
-    time.sleep(wait_ms / 500)
-    '''
-
-    # Need to vary delay time logarithmically so that it's slower early in
-    # the ramp up and faster at the top.
+    pixel.fill(color)
+    for i in range(24):
+        pixel[i] = (0, 0, 0)
+        time.sleep(delay_sec)
 
 
 if __name__ == '__main__':
     while True:
-        breathe((0, 33, 165))
+        for i in range(5):
+            breathe((0, 33, 165))
+
+        countdown((0, 33, 165), 24)
