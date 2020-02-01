@@ -14,13 +14,15 @@ import math
 pixel = neopixel.NeoPixel(board.D18, 24)
 
 
-def breathe(target_color: tuple, steps: int = 500, speed: int = 90):
+def breathe(target_color: tuple, speed: int = 90):
     if speed <= 0:
         speed = 1
     if speed > 100:
         speed = 100
 
     speed_factor = speed / 100
+
+    steps = max(target_color)
 
     step_R = target_color[0]/steps
     step_G = target_color[1]/steps
@@ -32,28 +34,30 @@ def breathe(target_color: tuple, steps: int = 500, speed: int = 90):
 
     # Fade from 0 to target: each step gets a shorter delay
     # count down from steps to 0, with ln(step)
-    for i in range(steps, 0, -1):
+    for i in range(steps+1, 0, -1):
         c = (int(r), int(g), int(b))
         pixel.fill(c)
         pixel.show()
-        delay_ms = math.log(i)/speed_factor
-        time.sleep(delay_ms / 1000)
         r += step_R
         g += step_G
         b += step_B
-
+        delay_ms = math.log(i) / speed_factor
+        time.sleep(delay_ms / 1000)
 
     # Fade from target to 0: each step gets a longer delay
     # count up from 0 to steps witn ln(step)
-    for i in range(0, steps, 1):
+    for i in range(1, steps+2, 1):
         r -= step_R
         g -= step_G
         b -= step_B
         c = (int(r), int(g), int(b))
         pixel.fill(c)
         pixel.show()
-        delay_ms = math.log(i)/speed_factor
+        delay_ms = math.log(i) / speed_factor
         time.sleep(delay_ms / 1000)
+
+    # Pause at 'off' for a moment
+    time.sleep(0.1)
     
     '''
     for x in range(steps):
