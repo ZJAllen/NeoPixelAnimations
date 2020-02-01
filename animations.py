@@ -65,24 +65,25 @@ def countdown(color: tuple, timer_seconds: int):
 
     pixel.fill(color)
 
-    r = color[0]
-    g = color[1]
-    b = color[2]
-
     for i in range(24):
         # Instead of jumping to off, fade to off
         steps = max(color)
+        
+        r = color[0]
+        g = color[1]
+        b = color[2]
 
         step_R = color[0]/steps
         step_G = color[1]/steps
         step_B = color[2]/steps
+        
         for j in range(1, steps+2, 1):
             r -= step_R
             g -= step_G
             b -= step_B
             color = (int(r), int(g), int(b))
             pixel[i] = color
-            time.sleep(math.log(i) / 1000)
+            time.sleep(math.log(j) / 1000)
         
         time.sleep(delay_sec)
 
