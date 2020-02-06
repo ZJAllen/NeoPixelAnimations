@@ -13,7 +13,7 @@ from PIL import Image
 
 
 anim1 = "img/Blue Breathing.bmp"
-anim2 = "img/Wheel2.bmp"
+anim2 = "img/Wheel1.bmp"
 
 pixel_pin = board.D18
 num_pixels = 24
