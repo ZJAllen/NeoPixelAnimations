@@ -9,9 +9,29 @@ import board
 import neopixel
 import time
 import math
+from PIL import Image
 
 
-pixel = neopixel.NeoPixel(board.D18, 24)
+anim1 = "img/Blue Breathing.bmp"
+
+pixel_pin = board.D18
+num_pixels = 24
+ORDER = neopixel.GRB
+
+pixel = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2,
+                          auto_write=False, pixel_order=ORDER)
+
+
+def play_anim(animation_bmp):
+    wait_sec = 1 / 24  # 24 FPS
+
+    img = Image.open(animation_bmp)
+    pix = img.load()
+
+    for i in range(img.size[0]):
+        for j in range(img.size[1]):
+            pixel[j] = pix[i, j]
+        time.sleep(wait_sec)
 
 
 def breathe(target_color: tuple, speed: int = 90):
@@ -110,9 +130,14 @@ if __name__ == '__main__':
     red = (0, 0, 100)
     white = (100, 100, 100)
 
+    for i in range(3):
+        play_anim(anim1)
+        
+    '''
     while True:
         for i in range(2):
             breathe((0, 33, 165))
 
         for i in range(2):
             wheel(white, red)
+    '''
