@@ -40,8 +40,6 @@ def play_anim(animation_bmp):
     except ValueError:
         raise
 
-    
-
 
 def breathe(target_color: tuple, speed: int = 90):
     if speed <= 0:
@@ -127,7 +125,7 @@ def wheel(base_color: tuple, wheel_color: tuple, speed: int = 50):
     if speed < 1:
         speed = 1
 
-    delay_sec = 1 / speed
+    delay_sec = 1 / speed * 10
 
     for i in range(1, 24):
         pixel[i-1] = base_color
@@ -138,7 +136,8 @@ def wheel(base_color: tuple, wheel_color: tuple, speed: int = 50):
 
 if __name__ == '__main__':
     blue = (0, 33, 165)
-    red = (0, 0, 100)
+    red = (100, 0, 0)
+    orange = (250, 70, 22)
     white = (100, 100, 100)
 
     for i in range(3):
