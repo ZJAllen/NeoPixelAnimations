@@ -68,7 +68,7 @@ def countdown(color: tuple, timer_seconds: int):
     for i in range(24):
         # Instead of jumping to off, fade to off
         steps = max(color)
-        
+
         r = color[0]
         g = color[1]
         b = color[2]
@@ -84,18 +84,19 @@ def countdown(color: tuple, timer_seconds: int):
             fade_color = (int(r), int(g), int(b))
             pixel[i] = fade_color
             time.sleep(math.log(j) / 1000)
-        
+
         time.sleep(delay_sec)
+
 
 def wheel(base_color: tuple, wheel_color: tuple, speed: int = 50):
     pixel.fill(base_color)
     pixel[0] = wheel_color
-    
+
     if speed > 100:
         speed = 100
     if speed < 1:
         speed = 1
-    
+
     delay_sec = 1 / speed
 
     for i in range(1, 24):
@@ -107,10 +108,11 @@ def wheel(base_color: tuple, wheel_color: tuple, speed: int = 50):
 if __name__ == '__main__':
     blue = (0, 33, 165)
     red = (0, 0, 100)
-    white = 
+    white = (100, 100, 100)
+
     while True:
         for i in range(2):
             breathe((0, 33, 165))
 
         for i in range(2):
-            wheel(white, )
+            wheel(white, red)
