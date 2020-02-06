@@ -31,6 +31,7 @@ def play_anim(animation_bmp):
     for i in range(img.size[0]):
         for j in range(img.size[1]):
             pixel[j] = pix[i, j]
+        pixel.show()
         time.sleep(wait_sec)
 
 
@@ -103,6 +104,7 @@ def countdown(color: tuple, timer_seconds: int):
             b -= step_B
             fade_color = (int(r), int(g), int(b))
             pixel[i] = fade_color
+            pixel.show()
             time.sleep(math.log(j) / 1000)
 
         time.sleep(delay_sec)
@@ -122,6 +124,7 @@ def wheel(base_color: tuple, wheel_color: tuple, speed: int = 50):
     for i in range(1, 24):
         pixel[i-1] = base_color
         pixel[i] = wheel_color
+        pixel.show()
         time.sleep(delay_sec)
 
 
@@ -132,7 +135,7 @@ if __name__ == '__main__':
 
     for i in range(3):
         play_anim(anim1)
-        
+
     '''
     while True:
         for i in range(2):
