@@ -87,10 +87,30 @@ def countdown(color: tuple, timer_seconds: int):
         
         time.sleep(delay_sec)
 
+def wheel(base_color: tuple, wheel_color: tuple, speed: int = 50):
+    pixel.fill(base_color)
+    pixel[0] = wheel_color
+    
+    if speed > 100:
+        speed = 100
+    if speed < 1:
+        speed = 1
+    
+    delay_sec = 1 / speed
+
+    for i in range(1, 24):
+        pixel[i-1] = base_color
+        pixel[i] = wheel_color
+        time.sleep(delay_sec)
+
 
 if __name__ == '__main__':
+    blue = (0, 33, 165)
+    red = (0, 0, 100)
+    white = 
     while True:
         for i in range(2):
             breathe((0, 33, 165))
 
-        countdown((0, 33, 165), 24)
+        for i in range(2):
+            wheel(white, )
