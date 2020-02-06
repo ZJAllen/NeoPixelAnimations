@@ -28,11 +28,19 @@ def play_anim(animation_bmp):
     img = Image.open(animation_bmp)
     pix = img.load()
 
-    for i in range(img.size[0]):
-        for j in range(img.size[1]):
-            pixel[j] = pix[i, j]
-        pixel.show()
-        time.sleep(wait_sec)
+    try:
+        if img.size[0] % num_pixels != 0:
+            raise ValueError(f"Width of Bitmap is not a multiple of {num_pixels}")
+        else:
+            for i in range(img.size[0]):
+                for j in range(img.size[1]):
+                    pixel[j] = pix[i, j]
+                pixel.show()
+                time.sleep(wait_sec)
+    except ValueError:
+        raise
+
+    
 
 
 def breathe(target_color: tuple, speed: int = 90):
