@@ -14,6 +14,7 @@ from PIL import Image
 
 anim1 = "img/Blue Breathing.bmp"
 anim2 = "img/Wheel1.bmp"
+anim3 = "img/WL Blue Bounce.bmp"
 
 pixel_pin = board.D18
 num_pixels = 24
@@ -142,7 +143,7 @@ if __name__ == '__main__':
     white = (100, 100, 100)
 
     for i in range(3):
-        play_anim(anim2)
+        play_anim(anim3)
 
     '''
     while True:
