@@ -142,8 +142,8 @@ if __name__ == '__main__':
     orange = (250, 70, 22)
     white = (100, 100, 100)
 
-    for i in range(3):
-        play_anim(anim3)
+    while True:
+        play_anim(anim1)
 
     '''
     while True:
